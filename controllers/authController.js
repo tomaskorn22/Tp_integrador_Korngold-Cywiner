@@ -1,3 +1,4 @@
+import pool from '../models/DB.js';
 const pool = require('../models/DB.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');

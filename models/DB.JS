@@ -1,12 +1,8 @@
 
-const { Pool } = require('pg');
-require('dotenv').config();
+import pkg from 'pg';
+const { Pool } = pkg;
+import config from '../configs/db-config.js';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+const pool = new Pool(config);
 
-module.exports = pool;
+export default pool;
