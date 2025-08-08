@@ -1,7 +1,7 @@
-const pool = require('../models/DB.js'); // ajusta según tu archivo de conexión
+import pool from '../models/DB.js';
 
 // 1. GET /api/event - lista eventos con filtros y paginación
-exports.getEvents = async (req, res) => {
+export const getEvents = async (req, res) => {
   const { name, startdate, tag, page = 1, limit = 10 } = req.query;
 
   let filters = [];
@@ -69,7 +69,7 @@ exports.getEvents = async (req, res) => {
 };
 
 // 2. GET /api/event/:id - detalle completo de un evento
-exports.getEventById = async (req, res) => {
+export const getEventById = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -114,7 +114,7 @@ exports.getEventById = async (req, res) => {
 };
 
 // 3. POST /api/event - crear evento (requiere autenticación)
-exports.createEvent = async (req, res) => {
+export const createEvent = async (req, res) => {
   const { name, description, start_date, id_event_location } = req.body;
   const id_creator_user = req.user.id; // middleware JWT debe poner esto
 
@@ -137,7 +137,7 @@ exports.createEvent = async (req, res) => {
 };
 
 // 4. PUT /api/event/:id - editar evento (sólo creador)
-exports.updateEvent = async (req, res) => {
+export const updateEvent = async (req, res) => {
   const { id } = req.params;
   const { name, description, start_date, id_event_location } = req.body;
   const id_user = req.user.id;
@@ -170,7 +170,7 @@ exports.updateEvent = async (req, res) => {
 };
 
 // 5. DELETE /api/event/:id - borrar evento (con validaciones)
-exports.deleteEvent = async (req, res) => {
+export const deleteEvent = async (req, res) => {
   const { id } = req.params;
   const id_user = req.user.id;
 
@@ -194,3 +194,5 @@ exports.deleteEvent = async (req, res) => {
     res.status(500).json({ error: 'Error al eliminar evento' });
   }
 };
+// Al final del archivo authController.js
+export default deleteEvent;

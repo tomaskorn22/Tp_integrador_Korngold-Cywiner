@@ -1,7 +1,6 @@
-// middleware/authMiddleware.js
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-exports.authenticateJWT = (req, res, next) => {
+export function authenticateJWT(req, res, next) {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -16,4 +15,4 @@ exports.authenticateJWT = (req, res, next) => {
     req.user = user; // info del usuario para usar en controladores
     next();
   });
-};
+}

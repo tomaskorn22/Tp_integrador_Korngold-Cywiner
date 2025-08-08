@@ -1,7 +1,7 @@
 import pool from '../models/DB.js';
-const pool = require('../models/DB.js');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+
 
 // Validación de email con regex
 function isEmail(email) {
@@ -9,7 +9,7 @@ function isEmail(email) {
   return re.test(email);
 }
 
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
   const { first_name, last_name, username, password } = req.body;
 
   if (!first_name || first_name.length < 3 || !last_name || last_name.length < 3) {
@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!isEmail(username)) {
@@ -66,4 +66,8 @@ exports.login = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Error interno', token: '' });
   }
+
+  
 };
+// Al final del archivo authController.js
+export default login;
