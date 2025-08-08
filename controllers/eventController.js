@@ -1,4 +1,4 @@
-const pool = require('../models/DB.JS'); // ajusta según tu archivo de conexión
+const pool = require('../models/DB.js'); // ajusta según tu archivo de conexión
 
 // 1. GET /api/event - lista eventos con filtros y paginación
 exports.getEvents = async (req, res) => {
