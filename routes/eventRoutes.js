@@ -1,5 +1,5 @@
 import express from 'express';
-import eventController from '../controllers/eventController.js';
+import * as eventController from '../controllers/eventController.js';
 import { authenticateJWT } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
