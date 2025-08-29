@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import authRoutes from './routes/authRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
+import eventLocationRoutes from './routes/eventLocationRoutes.js';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // Rutas
 app.use('/api/user', authRoutes);
 app.use('/api/event', eventRoutes);
+app.use('/api/event-location', eventLocationRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
